@@ -10,15 +10,22 @@ using i64 = long long;
 #define debug(...) 42
 #endif
 
-constexpr int INF = 1E9;
-
-void solve(int t) {
+void solve() {
     int n;
     cin >> n;
 
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
+    vector<int> a(n), cnt(n);
+    for (int i = 0; i < n; i++) {
         cin >> a[i];
+        a[i]--;
+        cnt[a[i]]++;
+    }
+
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+        ans += cnt[i] / 2;
+
+    cout << ans << endl;
     return;
 }
 
@@ -30,7 +37,7 @@ int main() {
     cin >> t;
 
     while (t--)
-        solve(t);
+        solve();
     
     return 0;
 }
